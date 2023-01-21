@@ -1,6 +1,6 @@
 {
   "name": "@mnik01/litebook",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Lite alternative to StoryBook using Vite",
   "license": "MIT",
   "scripts": {
