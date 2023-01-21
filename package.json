@@ -10,7 +10,9 @@
     "start": "node dist/index.js",
     "pub:beta": "pnpm build && npm publish --tag beta",
     "pub:next": "pnpm build && npm publish --tag next",
-    "pub:release": "pnpm build && npm publish"
+    "pub:release": "pnpm build && npm publish",
+    "litebook": "vite serve .litebook",
+    "litebook:build": "vite build .litebook"
   },
   "repository": {
     "type": "git",

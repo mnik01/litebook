@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "fs-extra";
 import { runCli } from "./cli.js";
+import { createLitebook } from "./createLitebook.js";
 
 const main = async () => {
   runCli();
@@ -14,6 +15,11 @@ const main = async () => {
   fs.writeJSONSync("package.json", pkgJson, {
     spaces: 2,
   });
+  try {
+    createLitebook();
+  } catch (error) {
+    process.stdout.write("Litebook already initialized in this repo");
+  }
 
   process.exit(0);
 };

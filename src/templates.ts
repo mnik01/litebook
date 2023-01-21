@@ -1,7 +1,5 @@
-#!/usr/bin/env node
-import s from"fs-extra";import{Command as n}from"commander";var a="litebook",i=()=>{new n().name(a).description("A CLI for initializing litebook in your project").addHelpText("afterAll",`
- Litebook initialized. Use npm run litebook to start dev server. And npm run litebook:build to build it 
-`)};import o from"fs-extra";var t={indexHtml:`
+export const templates = {
+  indexHtml: `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,10 +10,11 @@ import s from"fs-extra";import{Command as n}from"commander";var a="litebook",i=(
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./index.tsx"><\/script>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>  
-  `,indexTsx:`
+  `,
+  indexTsx: `
 import React, { useEffect, useState, FC } from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -76,7 +75,8 @@ createRoot(document.getElementById('root') as HTMLElement).render(
     <App />
   </StrictMode>
 );  
-  `,viteConfigTs:`
+  `,
+  viteConfigTs: `
   /// <reference types="vitest" />
   /// <reference types="vite/client" />
   import { defineConfig } from 'vite';
@@ -86,5 +86,5 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   export default defineConfig({
     plugins: [react()],
   });  
-  `};var r=()=>{o.mkdirSync(".litebook"),o.writeFileSync(".litebook/index.html",t.indexHtml),o.writeFileSync(".litebook/index.tsx",t.indexTsx),o.writeFileSync(".litebook/vite.config.ts",t.viteConfigTs)};var c=async()=>{i();let e=s.readJSONSync("package.json");e.scripts={...e.scripts,litebook:"vite serve .litebook","litebook:build":"vite build .litebook"},s.writeJSONSync("package.json",e,{spaces:2});try{r()}catch{process.stdout.write("Litebook already initialized in this repo")}process.exit(0)};c().catch(e=>{process.stderr.write("Aborting installation..."),e instanceof Error?process.stderr.write(JSON.stringify(e)):(process.stderr.write("An unknown error has occurred. Please open an issue on github with the below:"),process.stdout.write(e)),process.exit(1)});
-//# sourceMappingURL=index.js.map
+  `,
+};
