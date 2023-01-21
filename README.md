@@ -30,8 +30,8 @@ Hot reload for stories supported. But you need to restart litebook if you create
 
 #### Usage
 
-- pnpm: run `pnpx @mnik01/litebook` for initializing then start dev server with `pnpm dev`
-- npm: run `npx @mnik01/litebook` for initializing then start dev server with `npm run dev`
+- pnpm: run `pnpx @mnik01/litebook` for initializing then start dev server with `pnpm litebook`
+- npm: run `npx @mnik01/litebook` for initializing then start dev server with `npm run litebook`
 
 ### Roadmap
 
