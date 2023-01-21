@@ -74,13 +74,19 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   </StrictMode>
 );  
   `,viteConfigTs:`
-  /// <reference types="vitest" />
-  /// <reference types="vite/client" />
-  import { defineConfig } from 'vite';
-  import react from '@vitejs/plugin-react';
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+import { defineConfig, loadConfigFromFile } from 'vite';
 
-  export default defineConfig({
-    plugins: [react()],
-  });  
-  `};var i=()=>{o.mkdirSync(".litebook"),o.writeFileSync(".litebook/index.html",t.indexHtml),o.writeFileSync(".litebook/index.tsx",t.indexTsx),o.writeFileSync(".litebook/vite.config.ts",t.viteConfigTs)};var r=async()=>{let e=s.readJSONSync("package.json");e.scripts={...e.scripts,litebook:"vite serve .litebook","litebook:build":"vite build .litebook"},s.writeJSONSync("package.json",e,{spaces:2});try{i()}catch{process.stdout.write("Litebook already initialized in this repo")}process.exit(0)};r().catch(e=>{process.stderr.write("Aborting installation..."),e instanceof Error?process.stderr.write(JSON.stringify(e)):(process.stderr.write("An unknown error has occurred. Please open an issue on github with the below:"),process.stdout.write(e)),process.exit(1)});
+export default defineConfig(async () => {
+  const rootProjectConfig = await loadConfigFromFile({ command: 'serve', mode: 'dev' }, 'vite.config.ts')
+
+  return {
+    resolve: rootProjectConfig?.config.resolve,
+    plugins: rootProjectConfig?.config.plugins,
+  }
+});`,tsconfigJson:`
+{
+  "extends": "../tsconfig.json",
+}`};var i=()=>{o.mkdirSync(".litebook"),o.writeFileSync(".litebook/index.html",t.indexHtml),o.writeFileSync(".litebook/index.tsx",t.indexTsx),o.writeFileSync(".litebook/vite.config.ts",t.viteConfigTs),o.writeFileSync(".litebook/tsconfig.json",t.tsconfigJson)};var r=async()=>{let e=s.readJSONSync("package.json");e.scripts={...e.scripts,litebook:"vite serve .litebook","litebook:build":"vite build .litebook"},s.writeJSONSync("package.json",e,{spaces:2});try{i()}catch{process.stdout.write("Litebook already initialized in this repo")}process.exit(0)};r().catch(e=>{process.stderr.write("Aborting installation..."),e instanceof Error?process.stderr.write(JSON.stringify(e)):(process.stderr.write("An unknown error has occurred. Please open an issue on github with the below:"),process.stdout.write(e)),process.exit(1)});
 //# sourceMappingURL=index.js.map

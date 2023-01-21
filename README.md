@@ -15,3 +15,5 @@ Supports:
 - Typescript
 - React
 - pnpm
+
+Hot reload for stories supported. But you need to restart litebook if you create new storie

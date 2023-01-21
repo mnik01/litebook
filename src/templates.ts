@@ -76,13 +76,20 @@ createRoot(document.getElementById('root') as HTMLElement).render(
 );  
   `,
   viteConfigTs: `
-  /// <reference types="vitest" />
-  /// <reference types="vite/client" />
-  import { defineConfig } from 'vite';
-  import react from '@vitejs/plugin-react';
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+import { defineConfig, loadConfigFromFile } from 'vite';
 
-  export default defineConfig({
-    plugins: [react()],
-  });  
-  `,
+export default defineConfig(async () => {
+  const rootProjectConfig = await loadConfigFromFile({ command: 'serve', mode: 'dev' }, 'vite.config.ts')
+
+  return {
+    resolve: rootProjectConfig?.config.resolve,
+    plugins: rootProjectConfig?.config.plugins,
+  }
+});`,
+  tsconfigJson: `
+{
+  "extends": "../tsconfig.json",
+}`,
 };

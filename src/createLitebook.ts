@@ -6,4 +6,5 @@ export const createLitebook = () => {
   fs.writeFileSync(".litebook/index.html", templates.indexHtml);
   fs.writeFileSync(".litebook/index.tsx", templates.indexTsx);
   fs.writeFileSync(".litebook/vite.config.ts", templates.viteConfigTs);
+  fs.writeFileSync(".litebook/tsconfig.json", templates.tsconfigJson);
 };
