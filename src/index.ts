@@ -1,18 +1,17 @@
 #!/usr/bin/env node
-import path from "path";
 import fs from "fs-extra";
 import { runCli } from "./cli.js";
 
 const main = async () => {
-  const currentDirName = runCli();
+  runCli();
   // Write name to package.json
-  const pkgJson = fs.readJSONSync(path.join(currentDirName, "package.json"));
+  const pkgJson = fs.readJSONSync("package.json");
   pkgJson.scripts = {
     ...pkgJson.scripts,
     litebook: "vite serve .litebook",
     "litebook:build": "vite build .litebook",
   };
-  fs.writeJSONSync(path.join(currentDirName, "package.json"), pkgJson, {
+  fs.writeJSONSync("package.json", pkgJson, {
     spaces: 2,
   });
 
