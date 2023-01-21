@@ -1,4 +1,4 @@
-# Lite alternative to StoryBook using Vite.
+# Lite alternative to StoryBook using Vite
 
 > **CURRENTLY IN DEVELOPMENT DO NOT USE IT**
 
