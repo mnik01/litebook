@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+import i from"path";import n from"fs-extra";import{Command as s}from"commander";import r from"path";var c="litebook",t=()=>(new s().name(c).description("A CLI for initializing litebook in your project").addHelpText("afterAll",`
+ Litebook initialized. Use npm run litebook to start dev server. And npm run litebook:build to build it 
+`),r.basename(r.resolve(process.cwd())));var a=async()=>{let o=t(),e=n.readJSONSync(i.join(o,"package.json"));e.scripts={...e.scripts,litebook:"vite serve .litebook","litebook:build":"vite build .litebook"},n.writeJSONSync(i.join(o,"package.json"),e,{spaces:2}),process.exit(0)};a().catch(o=>{process.stderr.write("Aborting installation..."),o instanceof Error?process.stderr.write(JSON.stringify(o)):(process.stderr.write("An unknown error has occurred. Please open an issue on github with the below:"),process.stdout.write(o)),process.exit(1)});
+//# sourceMappingURL=index.js.map

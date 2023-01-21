@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 import path from "path";
 import fs from "fs-extra";
-import { runCli } from "./cli";
+import { runCli } from "./cli.js";
 
 const main = async () => {
   const currentDirName = runCli();
-
   // Write name to package.json
   const pkgJson = fs.readJSONSync(path.join(currentDirName, "package.json"));
   pkgJson.scripts = {
