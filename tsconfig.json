@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "types": ["node"],
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "esModuleInterop": true
+  },
+  "include": ["src", ".eslintrc.cjs"]
+}
