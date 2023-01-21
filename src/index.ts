@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 import fs from "fs-extra";
-import { runCli } from "./cli.js";
 import { createLitebook } from "./createLitebook.js";
 
 const main = async () => {
-  runCli();
   // Write name to package.json
   const pkgJson = fs.readJSONSync("package.json");
   pkgJson.scripts = {

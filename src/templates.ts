@@ -19,7 +19,6 @@ import React, { useEffect, useState, FC } from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import './tw.css';
 import '../src/index.css';
 
 const App = () => {
@@ -81,7 +80,6 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   /// <reference types="vite/client" />
   import { defineConfig } from 'vite';
   import react from '@vitejs/plugin-react';
-  import path from 'path';
 
   export default defineConfig({
     plugins: [react()],

@@ -1,7 +1,5 @@
 #!/usr/bin/env node
-import s from"fs-extra";import{Command as n}from"commander";var a="litebook",i=()=>{new n().name(a).description("A CLI for initializing litebook in your project").addHelpText("afterAll",`
- Litebook initialized. Use npm run litebook to start dev server. And npm run litebook:build to build it 
-`)};import o from"fs-extra";var t={indexHtml:`
+import s from"fs-extra";import o from"fs-extra";var t={indexHtml:`
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +18,6 @@ import React, { useEffect, useState, FC } from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import './tw.css';
 import '../src/index.css';
 
 const App = () => {
@@ -81,10 +78,9 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   /// <reference types="vite/client" />
   import { defineConfig } from 'vite';
   import react from '@vitejs/plugin-react';
-  import path from 'path';
 
   export default defineConfig({
     plugins: [react()],
   });  
-  `};var r=()=>{o.mkdirSync(".litebook"),o.writeFileSync(".litebook/index.html",t.indexHtml),o.writeFileSync(".litebook/index.tsx",t.indexTsx),o.writeFileSync(".litebook/vite.config.ts",t.viteConfigTs)};var c=async()=>{i();let e=s.readJSONSync("package.json");e.scripts={...e.scripts,litebook:"vite serve .litebook","litebook:build":"vite build .litebook"},s.writeJSONSync("package.json",e,{spaces:2});try{r()}catch{process.stdout.write("Litebook already initialized in this repo")}process.exit(0)};c().catch(e=>{process.stderr.write("Aborting installation..."),e instanceof Error?process.stderr.write(JSON.stringify(e)):(process.stderr.write("An unknown error has occurred. Please open an issue on github with the below:"),process.stdout.write(e)),process.exit(1)});
+  `};var i=()=>{o.mkdirSync(".litebook"),o.writeFileSync(".litebook/index.html",t.indexHtml),o.writeFileSync(".litebook/index.tsx",t.indexTsx),o.writeFileSync(".litebook/vite.config.ts",t.viteConfigTs)};var r=async()=>{let e=s.readJSONSync("package.json");e.scripts={...e.scripts,litebook:"vite serve .litebook","litebook:build":"vite build .litebook"},s.writeJSONSync("package.json",e,{spaces:2});try{i()}catch{process.stdout.write("Litebook already initialized in this repo")}process.exit(0)};r().catch(e=>{process.stderr.write("Aborting installation..."),e instanceof Error?process.stderr.write(JSON.stringify(e)):(process.stderr.write("An unknown error has occurred. Please open an issue on github with the below:"),process.stdout.write(e)),process.exit(1)});
 //# sourceMappingURL=index.js.map
