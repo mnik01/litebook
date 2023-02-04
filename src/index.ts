@@ -17,6 +17,7 @@ const main = async () => {
     createLitebook();
   } catch (error) {
     process.stdout.write("Litebook already initialized in this repo");
+    process.stdout.write(error as string);
   }
 
   process.exit(0);

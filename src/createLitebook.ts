@@ -21,6 +21,7 @@ export const createLitebook = () => {
     templates["vite.config.ts"](storiesInUsersProject)
   );
 
+  console.log(`storiesInUsersProject: ${storiesInUsersProject}`);
   // Stories
   fs.mkdirSync(".litebook/stories");
   storiesInUsersProject.forEach(async (st) => {
