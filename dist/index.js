@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import n from"fs-extra";import o from"fs-extra";import c from"glob";import{stdout as l}from"process";var i={"index.html":`<!DOCTYPE html>
+import c from"fs-extra";import o from"fs-extra";import l from"glob";import{stdout as s}from"process";var i={"index.html":`<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -129,6 +129,6 @@ export default defineConfig(async () => {
       </div>
     </StrictMode>
   );  
-  `};var s=()=>{let e=[];c("**/*.stories.tsx",{},function(t,r){l.write(r.join(`
-`)),e=[...r]}),o.mkdirSync(".litebook"),o.writeFileSync(".litebook/index.html",i["index.html"]),o.writeFileSync(".litebook/index.tsx",i["index.tsx"]),o.writeFileSync(".litebook/tsconfig.json",i["tsconfig.json"]),o.writeFileSync(".litebook/public/logo.svg",i["public/logo.svg"]),o.writeFileSync(".litebook/vite.config.ts",i["vite.config.ts"](e)),console.log(`storiesInUsersProject: ${e}`),o.mkdirSync(".litebook/stories"),e.forEach(async t=>{o.writeFileSync(`.litebook/stories/${t}/iframe.tsx`,i["stories/Component/iframe.tsx"](t))})};var a=async()=>{let e=n.readJSONSync("package.json");e.scripts={...e.scripts,litebook:"vite serve .litebook","litebook:build":"vite build .litebook"},n.writeJSONSync("package.json",e,{spaces:2});try{s()}catch(t){process.stdout.write("Litebook already initialized in this repo"),process.stdout.write(t)}process.exit(0)};a().catch(e=>{process.stderr.write("Aborting installation..."),e instanceof Error?process.stderr.write(JSON.stringify(e)):(process.stderr.write("An unknown error has occurred. Please open an issue on github with the below:"),process.stdout.write(e)),process.exit(1)});
+  `};var n=()=>{let e=[];l("**/*.stories.tsx",{},function(t,r){s.write(r.join(`
+`)),e=[...r]}),o.mkdirSync(".litebook"),o.writeFileSync(".litebook/index.html",i["index.html"]),o.writeFileSync(".litebook/index.tsx",i["index.tsx"]),o.writeFileSync(".litebook/tsconfig.json",i["tsconfig.json"]),o.writeFileSync(".litebook/public/logo.svg",i["public/logo.svg"]),o.writeFileSync(".litebook/vite.config.ts",i["vite.config.ts"](e)),s.write(`storiesInUsersProject: ${e}`),o.mkdirSync(".litebook/stories"),e.forEach(async t=>{o.writeFileSync(`.litebook/stories/${t}/iframe.tsx`,i["stories/Component/iframe.tsx"](t))})};var a=async()=>{let e=c.readJSONSync("package.json");e.scripts={...e.scripts,litebook:"vite serve .litebook","litebook:build":"vite build .litebook"},c.writeJSONSync("package.json",e,{spaces:2});try{n()}catch(t){process.stdout.write("Litebook already initialized in this repo"),process.stdout.write(t)}process.exit(0)};a().catch(e=>{process.stderr.write("Aborting installation..."),e instanceof Error?process.stderr.write(JSON.stringify(e)):(process.stderr.write("An unknown error has occurred. Please open an issue on github with the below:"),process.stdout.write(e)),process.exit(1)});
 //# sourceMappingURL=index.js.map
