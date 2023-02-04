@@ -1,39 +1,24 @@
 import fs from "fs-extra";
-import * as TF from "template-file";
 import glob from "glob";
+import { stdout } from "process";
+import { templates } from "./templates.js";
 
-export const createLitebook = async () => {
+export const createLitebook = () => {
   let storiesInUsersProject: string[] = [];
 
   glob("**/*.stories.tsx", {}, function (_, files) {
+    stdout.write(files.join("\n"));
     storiesInUsersProject = [...files];
   });
 
   fs.mkdirSync(".litebook");
-  fs.writeFileSync(
-    ".litebook/index.html",
-    await TF.renderFile("./templates/index.html", {})
-  );
-  fs.writeFileSync(
-    ".litebook/index.tsx",
-    await TF.renderFile("./templates/index.tsx", {})
-  );
-  fs.writeFileSync(
-    ".litebook/tsconfig.json",
-    await TF.renderFile("./templates/tsconfig.json", {})
-  );
-  fs.writeFileSync(
-    ".litebook/public/logo.svg",
-    await TF.renderFile("./templates/public/logo.svg", {})
-  );
+  fs.writeFileSync(".litebook/index.html", templates["index.html"]);
+  fs.writeFileSync(".litebook/index.tsx", templates["index.tsx"]);
+  fs.writeFileSync(".litebook/tsconfig.json", templates["tsconfig.json"]);
+  fs.writeFileSync(".litebook/public/logo.svg", templates["public/logo.svg"]);
   fs.writeFileSync(
     ".litebook/vite.config.ts",
-    await TF.renderFile("./templates/vite.config.ts", {
-      stories: storiesInUsersProject.map((st) => ({
-        lower: st.toLowerCase(),
-        capitalize: st,
-      })),
-    })
+    templates["vite.config.ts"](storiesInUsersProject)
   );
 
   // Stories
@@ -41,9 +26,7 @@ export const createLitebook = async () => {
   storiesInUsersProject.forEach(async (st) => {
     fs.writeFileSync(
       `.litebook/stories/${st}/iframe.tsx`,
-      await TF.renderFile(`./templates/stories/Component/iframe.tsx`, {
-        name: st,
-      })
+      templates["stories/Component/iframe.tsx"](st)
     );
   });
 };

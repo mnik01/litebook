@@ -42,8 +42,7 @@
   },
   "dependencies": {
     "fs-extra": "^11.1.0",
-    "glob": "^8.1.0",
-    "template-file": "^6.0.1"
+    "glob": "^8.1.0"
   },
   "bugs": {
     "url": "https://github.com/mnik01/litebook/issues"
