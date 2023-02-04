@@ -22,7 +22,7 @@ Supports:
 
 - Vite
 - Typescript
-- tailwindcss 
+- tailwindcss
 - React
 - pnpm
 
@@ -35,7 +35,10 @@ Hot reload for stories supported. But you need to restart litebook if you create
 
 ### Roadmap
 
-- add support for conrolls of component props
-- move `import '../src/index.css';` line from template to stdin. Ask about tailwind css from user via cli
-- write storybook like appearence
+- Add support for conrolls of component props
+- Move `import '../src/index.css';` line from template to stdin. Ask about tailwind css from user via cli
+- Write storybook like appearence
 - Error handling
+- Support of `.md` and `.mdx` files
+- Support for Vue and Svelte
+- Resize of canvas section
